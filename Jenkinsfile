@@ -18,13 +18,13 @@ pipeline {
         stage('create images of simple-api') {
             agent { label 'test' }
             steps {
-                sh 'cd simple-api/app && docker build -t simple-api .'
+                sh 'cd simple-api/app && docker build -t registry.gitlab.com/armza054/test-api .'
             }
         }
         stage('create container of simple-api') {
             agent { label 'test' }
             steps {
-                sh 'docker run -d -p 80:5000 simple-api'
+                sh 'docker run -d -p 80:5000 registry.gitlab.com/armza054/test-api'
             }
         }
     }
